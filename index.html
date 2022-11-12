@@ -17,6 +17,8 @@
    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css"
    integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
    crossorigin=""/>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
 
     <style>
             .container{
@@ -186,7 +188,7 @@
 
 </head>
 <body>
-   <div id="home">
+   <div id="home" style="height: 100vh;">
     <div id="navbar" class="shadowbottom">
         <div id="inner_nav">
             <div><a href="health/health.html"><p>Health care</p></a></div>
@@ -224,9 +226,9 @@
         
         <div id="issues">
             <div class="container px-4 py-5" id="icon-grid">
-                <h2 class="pb-2 border-bottom">Common Issues</h2>
+                <h2 class="pb-2 border-bottom common-issues">Common Issues</h2>
             
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+                <div class="common-issues-p row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
                   <div class="col d-flex align-items-start">
                     <svg class="bi text-muted flex-shrink-0 me-3" width="1.75em" height="1.75em"><use xlink:href="#bootstrap"/></svg>
                     <div>
@@ -293,10 +295,10 @@
 
     <div id="DoctorPanel">
 
-      <p class="h1 text-center" id="heading">Doctor Panel</p>
+      <p class="h1 text-center" id="heading">Expert Doctor Panel</p>
       <div class="container">
           <div class="row">
-              <div class="col-lg-4 mx-auto block my-2 py-2">
+              <div class="left-doctor col-lg-4 mx-auto block my-2 py-2">
               <img class="rounded-circle" src="https://imagesx.practo.com/providers/dr-madhu-ahuja-gynecologist-delhi-1d3a795e-b495-4a30-85f3-4082f103ea8a.jpg?i_type=t_100x100-2x" alt="Generic placeholder image" width="140" height="140">
               <h2>Dr. Madhu Ahuja</h2>
               <ul>
@@ -306,7 +308,7 @@
               </ul>
               <p><a class="btn btn-secondary" href="https://www.practo.com/delhi/doctor/dr-madhu-ahuja-endoscopist?practice_id=1358824&specialization=Women%27s%20Health&referrer=doctor_listing&category_name=service&category_id=4985" role="button">View details &raquo;</a></p>
               </div><!-- /.col-lg-4 -->
-              <div class="col-lg-4 mx-auto block my-2 py-2">
+              <div class="right-doctor col-lg-4 mx-auto block my-2 py-2">
               <img class="rounded-circle" src="https://imagesx.practo.com/providers/dr-mayur-dass-gynecologist-delhi-6c3fcb13-0aa9-4bb0-b9b7-fdf3da4d7005.jpg?i_type=t_100x100-2x" alt="Generic placeholder image" width="140" height="140">
               <h2>Dr. Mayur Dass</h2>
               <ul>
@@ -318,7 +320,7 @@
               </div><!-- /.col-lg-4 -->
           </div><!-- /.row -->
           <div class="row">
-              <div class="col-lg-4 mx-auto block my-2 py-2">
+              <div class="left-doctor col-lg-4 mx-auto block my-2 py-2">
               <img class="rounded-circle" src="https://imagesx.practo.com/providers/dr-manorama-bhutani-gynecologist-delhi-5f638de0-f570-40e6-a2e7-bab6692e315e.jpg?i_type=t_100x100-2x" alt="Generic placeholder image" width="140" height="140">
               <h2>Dr. Manorama Bhutani</h2>
               <ul>
@@ -328,7 +330,7 @@
               </ul>
               <p><a class="btn btn-secondary" href="https://www.practo.com/delhi/doctor/dr-manorama-bhutani-gynecologist-obstetrician?practice_id=707970&specialization=Women%27s%20Health&referrer=doctor_listing&category_name=service&category_id=4985" role="button">View details &raquo;</a></p>
               </div><!-- /.col-lg-4 -->
-              <div class="col-lg-4 mx-auto block my-2 py-2">
+              <div class="right-doctor col-lg-4 mx-auto block my-2 py-2">
               <img class="rounded-circle" src="https://imagesx.practo.com/providers/dr-shalini-chawla-khanna-infertility-specialist-delhi-6e48d247-f5c1-421a-8490-6c3e35f62377.jpg?i_type=t_100x100-2x" alt="Generic placeholder image" width="140" height="140">
               <h2>Dr. Shalini Chawla</h2>
               <ul>
@@ -354,10 +356,10 @@
             <!-- <img src="bootstrap-themes.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy"> -->
             <div id="map" class="d-block mx-lg-auto img-fluid" style="height: 310px; width: 432px;"></div>
           </div>
-          <div class="col-lg-6">
+          <div class="map-left col-lg-6">
             <h1 class="display-5 fw-bold lh-1 mb-3">Our Location</h1>
 
-            <p>Dwarka Sector-3, Dwarka, Delhi, 110078</p>
+            <p>NSUT Sector-3, Dwarka, Delhi, 110078</p>
           </div>
         </div>
       </div>
@@ -429,6 +431,59 @@
 
         
 
-
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.from('#navbar',{
+    duration : 1,
+    y : '-100%',
+    opacity: 0
+  });
+  gsap.from('#heroLeft',{
+    duration : 1,
+    y : '-50%',
+    opacity: 0
+  });
+  gsap.from('#heroRight',{
+    duration : 1,
+    y : '50%',
+    opacity: 0
+  });
+  gsap.from('.common-issues',{
+    scrollTrigger: ".common-issues",
+    duration : 1,
+    x : '-10%',
+    opacity: 0
+  });
+  gsap.from('.common-issues-p',{
+    scrollTrigger: ".common-issues-p",
+    duration : 1,
+    x : '10%',
+    opacity: 0
+  });
+  gsap.from('.left-doctor',{
+    scrollTrigger: ".left-doctor",
+    duration : 1,
+    x : '-10%',
+    opacity: 0
+  });
+  gsap.from('.map-left',{
+    scrollTrigger: ".map-left",
+    duration : 1,
+    x : '-10%',
+    opacity: 0
+  });
+  gsap.from('#map',{
+    scrollTrigger: "#map",
+    duration : 1,
+    y : '10%',
+    opacity: 0
+  });
+  gsap.from('.right-doctor',{
+    scrollTrigger: ".right-doctor",
+    duration : 1,
+    x : '-10%',
+    opacity: 0
+  });
+</script>
 </body>
 </html>
