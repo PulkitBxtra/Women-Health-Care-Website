@@ -448,7 +448,7 @@
   });
   gsap.from('#heroRight',{
     duration : 1,
-    y : '50%',
+    y : '-50%',
     opacity: 0
   });
   gsap.from('.common-issues',{
@@ -460,13 +460,19 @@
   gsap.from('.common-issues-p',{
     scrollTrigger: ".common-issues-p",
     duration : 1,
-    x : '10%',
+    x : '-10%',
     opacity: 0
   });
   gsap.from('.left-doctor',{
     scrollTrigger: ".left-doctor",
     duration : 1,
-    x : '-10%',
+    x : '10%',
+    opacity: 0
+  });
+  gsap.from('.right-doctor',{
+    scrollTrigger: ".right-doctor",
+    duration : 1,
+    x : '10%',
     opacity: 0
   });
   gsap.from('.map-left',{
@@ -477,12 +483,6 @@
   });
   gsap.from('#map',{
     scrollTrigger: "#map",
-    duration : 1,
-    y : '10%',
-    opacity: 0
-  });
-  gsap.from('.right-doctor',{
-    scrollTrigger: ".right-doctor",
     duration : 1,
     x : '-10%',
     opacity: 0
