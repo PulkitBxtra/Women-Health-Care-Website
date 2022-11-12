@@ -10,6 +10,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
 
     <title>Health</title>
 
@@ -37,6 +39,10 @@
     #Blank{
         margin-top:30vh;
     }
+    .jumbotron{
+      display: flex;
+      align-items: center;
+    }
 
 
     </style>
@@ -54,29 +60,29 @@
        <!-- Main jumbotron for a primary marketing message or call to action --> 
 
 
-    <div id="Blank">
+    <!-- <div id="Blank">
 
-    </div>
+    </div> -->
 
 
-    <div class="jumbotron" style="height: 100vh;">
-        <div class="container" >
-          <h1 class="display-3" style="height: 130px;"><b>Information about Healthcare</b></h1>
+    <div class="jumbotron" style="height: 102vh;">
+        <div class="container" id="info">
+          <h1 class="display-3" style="height: 130px;" ><b>Information about Healthcare</b></h1>
           <p>Women's health includes a wide range of specialties and focus areas,
              such as Birth control, sexually transmitted infections (STIs), and gynecology
             Breast cancer, ovarian cancer, and other female cancers
            ,Mammography, Menopause and hormone therapy , Osteoporosis , Pregnancy and childbirth ,Sexual health
             Women and heart disease and Benign conditions affecting the function of the female reproductive organs.</p>
-          <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+          <p><a class="btn btn-primary btn-lg" href="/" role="button">Home &raquo;</a></p>
         </div>
       </div> 
 
-      <div id="Blank">
+      <!-- <div id="Blank">
 
-      </div>
+      </div> -->
 
 
-      <div class="container">
+      <div class="container down">
         <!-- Example row of columns -->
         <div class="row">
           <div class="col-md-4">
@@ -115,8 +121,8 @@
 
 
     <div class="lower">
-     <div class="lowerleft"> <a class="btn btn-primary btn-lg" href="#" role="button">Meditation App</a></div>  
-       <div class="lowerright"> <a class="btn btn-primary btn-lg" href="#" role="button">BMI Calculator</a></div>
+     <div class="lowerleft"> <a class="btn btn-primary btn-lg" href="./meditation/index.html" role="button">Meditation App</a></div>  
+       <div class="lowerright"> <a class="btn btn-primary btn-lg" href="./BMI/" role="button">BMI Calculator</a></div>
     </div>
 
     </main>
@@ -132,5 +138,22 @@
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="../../assets/js/vendor/popper.min.js"></script>
     <script src="../../dist/js/bootstrap.min.js"></script>
+
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.from('#info',{
+        scrollTrigger: "#info",
+        duration : 1,
+        x: "-2%",
+        opacity: 0
+      });
+
+      gsap.from('.down',{
+        scrollTrigger: ".down",
+        duration : 1,
+        y: "-20%",
+        opacity: 0
+      });
+    </script>
   </body>
 </html>
