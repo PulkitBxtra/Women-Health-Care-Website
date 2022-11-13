@@ -5,4 +5,4 @@
 
 You can simply download the code as a zip file, extract it and run the `index.html` in main directory.
 
-It is made using HTML,CSS and JS only.
+It is made using HTML,CSS, JS, Bootstrap, GSAP, Leaflet API and JQuery.
